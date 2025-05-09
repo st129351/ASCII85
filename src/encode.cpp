@@ -7,7 +7,8 @@ std::string EncodeASCII85(std::string data) {
     int excess = 0;
     std::vector<uint32_t> result;
     int count = 0;
-    std::string ascii85 = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+    // 85 items
+    std::string ascii85 = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu";
     std::string out;
 
     for (char i : data) {
@@ -41,13 +42,17 @@ std::string EncodeASCII85(std::string data) {
                 shift += 1;
             } // write 0
             // without add 0 i have trash in last symbols, instead of 0
+            if (curr32 == 0) {
+                excess = 0;
+                // if all block is 0, z must be
+            }
             result.push_back(curr32);
         }
     }
 
     for (uint32_t item : result) {
-        if (item == 0) {
-            out += 'z'; // zero 4 bytes
+        if (item == 0) { 
+            out += 'z'; // zero is 4 bytes by zero, because uint32_t
         }
         else {
             std::vector<int> ascii_symb;
