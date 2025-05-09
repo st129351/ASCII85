@@ -1,0 +1,13 @@
+.DS_Store
+.vscode/
+
+# build files
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+
+
