@@ -59,6 +59,5 @@ int main(int argc, char* argv[]) // quantity of arguments and array of str-argum
         std::cerr << "Error: " << err.what() << std::endl;
         return 1;
     }
-    
     return 0;
 }

@@ -11,7 +11,6 @@ std::string DecodeASCII85(std::string data) {
     if (data[0] == '<' && data[1] == '~' && data[data.length() - 2] == '~' && data[data.length() - 1] == '>') {
         data = data.substr(2, data.size() - 4); // string.substr(start_simb_pos, quantity of items)
     }
-
     // splitting the string into 5 symbols &&
     // convert a symbol to a number
     for (char item : data) {

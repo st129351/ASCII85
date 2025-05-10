@@ -12,6 +12,7 @@ std::string EncodeASCII85(std::string data) {
     std::string out;
 
     for (char i : data) {
+        
         count += 1;
         vec.push_back(i);
 
