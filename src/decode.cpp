@@ -23,10 +23,9 @@ std::string DecodeASCII85(std::string data) {
         }
         count += 1;
         unsigned int ind;
-        unsigned int size = ascii85.size();
-        for (int index = 0; index < size; index++) {
+        for (size_t index = 0; index < ascii85.size(); index++) {
             if (item == ascii85[index]) {
-                ind = index;
+                ind = static_cast<unsigned int> (index);
             }
         }
         vec.push_back(ind);
