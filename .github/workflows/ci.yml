@@ -1,0 +1,33 @@
+name: "build and test"
+
+on:
+    # determine the cases, that trigger the workflow
+    push:
+        branches: 
+            - "*"
+    pull_request:
+        branches:
+            - "*"
+    
+jobs:
+    # section, where define all task to workflow execute
+    build-and-test:
+        name: setup, building, testing
+        # container, in which the task is running
+        # ubuntu contains python3
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v3
+
+            - name: install dependencies
+            # update the package manager and install base tools (build-essential for c++)
+              run: | # afer | go on many-string command, '-y' flag is always answer 'yes'
+                sudo apt-get update
+                sudo apt-get install -y build-essential libgtest-dev
+            - name: build main executable
+              run : |
+                make ascii85
+            - name: clean all
+              run: |
+                make cleanall
