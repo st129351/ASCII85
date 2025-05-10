@@ -25,11 +25,20 @@ jobs:
               run: | # afer | go on many-string command, '-y' flag is always answer 'yes'
                 sudo apt-get update
                 sudo apt-get install -y build-essential libgtest-dev
-                
-            - name: build main executable
+
+            - name: build main
               run : |
                 bash build_main.sh
 
-            - name: clean all
+            - name: build gtests
               run: |
-                make cleanall
+                bash build_gtests.sh
+
+            - name: build & start tests on python
+              run: |
+                bash run_pytests.sh
+
+            - name: start gtests
+              run: |
+                bash run_gtests.sh
+
