@@ -6,6 +6,25 @@ std::string DecodeASCII85(std::string data) {
     std::vector<unsigned int> vec;
     std::vector<char> result;
     int count = 0;
+    bool ErrorFlag = false;
+
+    for (int item; item < data.size(); item++) {
+        bool correct = false;
+        for (int i; i < ascii85.size(); i++) {
+            if (data[item] == ascii85[i]) {
+                correct = true;
+                break;
+            }
+        }
+        if (!correct) {
+            ErrorFlag = true;
+        }
+    }
+
+    if (ErrorFlag) {
+        throw std::invalid_argument("Invalid ASCII85 encoded symbol in the input string");
+        // catch this in the main, when use Decode
+    }
     
     // correcting input string
     if (data[0] == '<' && data[1] == '~' && data[data.length() - 2] == '~' && data[data.length() - 1] == '>') {

@@ -46,7 +46,14 @@ int main(int argc, char* argv[]) // quantity of arguments and array of str-argum
             std::cout.write(outp.data(), outp.size()) << std::endl;
         }
         else {
-            change = DecodeASCII85(inp);
+            try {
+                change = DecodeASCII85(inp);
+            }
+            catch (const std::invalid_argument &exc) {
+                std::cerr << "Error: " << exc.what() << std::endl;
+                return 1;
+            }
+            
             for (char i : change) {
                 outp.push_back(i);
             }
