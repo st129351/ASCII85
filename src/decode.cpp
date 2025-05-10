@@ -8,9 +8,9 @@ std::string DecodeASCII85(std::string data) {
     int count = 0;
     bool ErrorFlag = false;
 
-    for (int item; item < data.size(); item++) {
+    for (size_t item = 0; item < data.size(); item++) {
         bool correct = false;
-        for (int i; i < ascii85.size(); i++) {
+        for (size_t i = 0; i < ascii85.size(); i++) {
             if (data[item] == ascii85[i]) {
                 correct = true;
                 break;
