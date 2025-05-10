@@ -27,7 +27,7 @@ std::string EncodeASCII85(std::string data) {
             vec.clear(); // clear vector and go to next 4 bytes (1 char = 1 byte)
         }
         
-        if (count == data.size() && count % 4 != 0) {
+        if (count == static_cast<int> (data.size()) && count % 4 != 0) {
             uint32_t curr32 = 0;
             int shift = 0;
             for (char item : vec) {
