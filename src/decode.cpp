@@ -23,7 +23,8 @@ std::string DecodeASCII85(std::string data) {
         }
         count += 1;
         unsigned int ind;
-        for (int index = 0; index < ascii85.size(); index++) {
+        unsigned int size = ascii85.size();
+        for (int index = 0; index < size; index++) {
             if (item == ascii85[index]) {
                 ind = index;
             }
