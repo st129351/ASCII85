@@ -5,6 +5,3 @@ set -e
 
 # build tests
 make tests
-
-# start with give all arguments
-./tests "$@"

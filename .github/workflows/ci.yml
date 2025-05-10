@@ -25,9 +25,11 @@ jobs:
               run: | # afer | go on many-string command, '-y' flag is always answer 'yes'
                 sudo apt-get update
                 sudo apt-get install -y build-essential libgtest-dev
+                
             - name: build main executable
               run : |
-                make ascii85
+                bash build_main.sh
+
             - name: clean all
               run: |
                 make cleanall
