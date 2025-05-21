@@ -13,3 +13,5 @@
 # prog
 ascii85
 tests
+
+__pycache__/
